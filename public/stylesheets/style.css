@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.showTime{
+    background:#fff;
+    margin:0px auto;
+    margin-top:100px;
+}
+
+.showTime small{
+    font-size: 14px;
+    color:#666;
+}
+.showTime small a{color:#666}
+.showTime img{width: 100%;}
+p.dt{
+    text-align: center;
+    font-size: 22px;
+    line-height: 2;
+}
+hr{border:1px solid #ccc;height:1px;margin:5px 0; color:#dedede;}

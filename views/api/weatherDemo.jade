@@ -1,0 +1,106 @@
+doctype html
+html
+    head
+        title weatherDemo
+        meta(http-equiv="Content-Type",content="text/html;charset=UTF-8")
+        link(href='/cube/cube-min.css')
+        link(href='/cube/type-min.css')
+        script(src='/javascripts/angular.min.js')
+        style .center-box{width:1000px;margin:0 auto; line-height: 24px; font-size:14px;}
+    body(ng-app='')
+        div.center-box
+            pre city:西安, // 地区名称
+                |city_en:xian, // 英文 (汉语拼音) 名称
+                |date_y:2012年8月30日,// 当前日期
+                |date:, // 网上解释是阴历年
+                |week:星期四, // 星期
+                |fchh:18, // 更新点时间 (18点)
+                |cityid:101110101, // 地区 ID
+                |    // 六天的温度
+                |temp1:21℃~28℃, // 在更新点之前是今日最高温到午夜的最低温，在更新点之后是今日午夜的最低温到明日的最高温
+                |temp2:18℃~22℃, // 以此类推
+                |temp3:17℃~26℃,
+                |temp4:16℃~28℃,
+                | temp5:16℃~29℃,
+                |temp6:17℃~30℃,
+                | // 华氏温度
+                |tempF1:69.8℉~82.4℉,
+                |tempF2:64.4℉~71.6℉,
+                |tempF3:62.6℉~78.8℉,
+                |tempF4:60.8℉~82.4℉,
+                |tempF5:60.8℉~84.2℉,
+                |tempF6:62.6℉~86℉,
+                |// 天气描述，同样根据更新点确定 weather1 是今天还是明天的
+                |weather1:阴转中雨,
+                |weather2:中雨转大雨,
+                |weather3:小到中雨转多云,
+                |weather4:多云转晴,
+                |weather5:晴,
+                |weather6:晴转多云,
+                |// 12 幅图片对应六天的天气，更新点前就是今日白天，今日夜间，明日白天，明日夜间，更新点之后就是今日夜间开始的
+                |img1:2, //阴天
+                |img2:8, // 中雨，和一图片对应天气的阴转中雨
+                |img3:8, // 依次类推
+                |img4:9,
+                |img5:21,
+                |img6:1,
+                |img7:1,
+                |img8:0,
+                |img9:0, // 晴
+                |img10:99, // 第五天是晴，没有 "转" 了，所以这幅图片是无效占位，和前一幅显示相同
+                |img11:0,
+                |img12:1,
+                |img_single:8,
+                |// 分别对应图片的描述
+                |img_title1:阴,
+                |img_title2:中雨,
+                |img_title3:中雨,
+                |img_title4:大雨,
+                |img_title5:小到中雨,
+                |img_title6:多云,
+                |img_title7:多云,
+                |img_title8:晴,
+                |img_title9:晴,
+                |img_title10:晴,
+                |img_title11:晴,
+                |img_title12:多云,
+                |img_title_single:中雨,
+                |// 六天的风力和风向
+                |wind1:西风小于3级转3-4级,
+                |wind2:西风3-4级,
+                |wind3:旋转风小于3级,
+                |wind4:旋转风小于3级,
+                |wind5:旋转风小于3级,
+                |wind6:旋转风小于3级,
+                |// 今明的风向
+                |fx1:西风,
+                |fx2:西风,
+                |// 六天的风力(和风向分开了)
+                |fl1:小于3级转3-4级,
+                |fl2:3-4级,
+                |fl3:小于3级,
+                |fl4:小于3级,
+                |fl5:小于3级,
+                |fl6:小于3级,
+                |// 生活指数，也和更新点有关系
+                |index:热, // 一天舒适度
+                |index_d:天气较热，建议着短裙、短裤、短套装、T恤等夏季服装。年老体弱者宜着长袖衬衫和单裤。, // 一天舒适度的描述
+                |index48:舒适, //两天的舒适度(48小时)
+                |index48_d:建议着薄型套装或牛仔衫裤等春秋过渡装。年老体弱者宜着套装、夹克衫等。, // 描述
+                |index_uv:弱, // 一天的紫外线指数
+                |index48_uv:最弱, // 两天紫外线指数
+                |index_xc:不宜, // 洗车指数
+                |index_tr:一般, // 旅游指数
+                |index_co:较舒适, //舒适度指数
+                |st1:24, // 这些不知道干啥的~
+                |st2:20,
+                |st3:17,
+                |st4:14,
+                |st5:26,
+                |st6:15,
+                |index_cl:不宜, // 晨练指数
+                |index_ls:不宜, // 晾晒指数
+                |index_ag:极易发 // 息斯敏过敏气象指数(我也不知道干啥的~)
+
+
+
