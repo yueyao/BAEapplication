@@ -1,8 +1,61 @@
 doctype html
 html
     head
-        title work
+        title Work
         meta(http-equiv="Content-Type",content="text/html;charset=UTF-8")
-        script(src='/javascripts/angular.min.js')
-    body(ng-app='')
-        h1 work
+        script(src='../javascripts/avalon.js')
+        link(href='../cube/type-min.css',rel="stylesheet")
+        link(href='../cube/cube-min.css',rel="stylesheet")
+        link(href='../stylesheets/work.css',rel="stylesheet")
+    body
+        div.header
+            div.header-inner
+                ul
+                    li.item
+                        a 测试
+                    li.item
+                        a 测试
+                    li.item
+                        a 测试
+        div.container
+            div.work-item.work-senchatouch
+                h3 DEMOTESTTEST
+                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
+                ul.items-container.phone-item
+                div#phone.work-iphone5c_big
+                    div.phone-block-big
+                        div.work-iframe
+                            iframe#workFrame(src="http://m.taobao.com", width="320", height="568", frameborder="0")
+            div.work-item.work-base
+                h3 RequireJs
+                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
+            div.work-item.work-base
+                h3 AngularJs
+                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
+            div.work-item.work-base
+                h3 AvalonJs
+                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
+            div.work-item.work-base
+                h3 Other
+                p.item-desc 过去的一年中,接触并使用了以下列表中的技术。
+                ul.items-container.work-other
+                    li Node.js——基于V8的后端语言
+                    li Grunt——自动化构建脚本
+                    li Bower——前端包管理器
+                    li LESS——CSS预处理
+                    li Git/SVN——版本控制
+                p.item-desc 框架
+                ul.items-container.work-other
+                    li SeaJS——模块加载器,国人出品
+                    li RequireJs——模块加载器
+                    li AngularJs——MVVM框架,google出品
+                    li  AvalonJs——MVVM框架,国人出品,兼容IE6
+                    li  Sencha Touch——ExtJs移动版本,用于构建WebApp
+                    li  Bootstrap——前端开发的工具包
+                p.item-desc 书籍列表
+                ul.items-container.work-other
+                    li HTTP权威指南 —— 正在阅读
+                    li Node.js深入浅出 —— 正在阅读
+                    li JavaScript Web富应用开发
+                    li Sencha Touch权威指南
+                    li 用AngularJs开发下一代Web应用

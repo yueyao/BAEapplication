@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>todo avalon.js</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script src="../javascripts/avalon.js"></script>
+    <link rel="stylesheet" href="../stylesheets/todo.css"/>
+    <script>
+        avalon.ready(function () {
+            avalon.define('todo', function (vm) {
+                var todos = [
+                    'example'
+                ];
+                vm.new='';
+                vm.todos = todos;
+                vm.add=function(){
+                    if(vm.new){
+                        for(var i=0;i<vm.todos.length;i++){
+                            if(vm.new==vm.todos[i]){
+                                alert('重复任务')
+                                vm.new='';
+                                return;
+                            }
+                        }
+                        vm.todos.push(vm.new);
+                        vm.new='';
+                    }
+                }
+                vm.remove = function(n){
+                    vm.todos.splice(n,1);
+                }
+            });
+            avalon.scan();
+        })
+    </script>
+</head>
+<body>
+<h1>Todos<small>&nbsp;By avalon.js</small>
+</h1>
+<hr/>
+<div ms-controller="todo">
+    <div id="todoapp">
+          <p>
+              <input type="text" placeholder="What needs to be done?"  ms-duplex="new" id="new-todo"/>
+              <input type="button" id="new-add" ms-click="add()" value="+">
+          </p>
+
+        <ul id="todo-list" ms-each="todos">
+            <li>
+                {{el}}
+                <input type="submit" ms-click="remove($index)" value="移除" class="destroy">
+            </li>
+        </ul>
+        <footer style="display: block;">
+            <div class="todo-count">
+                <b>{{todos.length}}items left</b>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

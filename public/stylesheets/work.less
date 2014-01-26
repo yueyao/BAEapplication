@@ -1,0 +1,215 @@
+@color:#151515;
+@bgcolor:#fff;
+@bordercolor:#f0f0f0;
+@activecolor:#357ae8;;
+@padding:15px;
+@global-width:1000px;
+.debug(@bg: red){
+  background:@bg;/*
+  border:1px solid green;*/
+}
+/*元素过渡效果*/
+.transition (@prop: all, @time: 1s, @ease: linear) {
+  -webkit-transition: @prop @time @ease;
+  -moz-transition: @prop @time @ease;
+  -o-transition: @prop @time @ease;
+  -ms-transition: @prop @time @ease;
+  transition: @prop @time @ease;
+}
+/*阴影*/
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+  -webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+  box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+.box-shadow2(@x: 0px, @y: 3px, @blur: 5px, @r: 0 ,@g: 0,@b: 0, @alpha: 0.5){
+  -webkit-box-shadow: @x @y @blur rgba(@r, @g, @b, @alpha);
+  -moz-box-shadow: @x @y @blur rgba(@r, @g, @b, @alpha);
+  box-shadow: @x @y @blur rgba(@r, @g, @b, @alpha);
+}
+/*转换/旋转*/
+.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+  -webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -moz-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -o-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -ms-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+/*圆角*/
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+/*互补色方案*/
+@base: #151515;
+@complement1: spin(@base, 180);
+@complement2: darken(spin(@base, 180), 5%);
+@lighten1: lighten(@base, 15%);
+@lighten2: lighten(@base, 30%);
+
+/* Implementation */
+.one_hubu    {color: @base;}
+.two_hubu    {color: @complement1;}
+.three_hubu  {color: @complement2;}
+.four_hubu   {color: @lighten1;}
+.five_hubu   {color: @lighten2;}
+
+body{
+  background:@bgcolor;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.container{
+  padding-right: @padding;
+  padding-left: @padding;
+  margin-right: auto;
+  margin-left: auto;
+  width:@global-width;
+}
+
+.header{
+  border-bottom: 1px solid @bordercolor;
+}
+.header-inner{
+  height: 116px;
+  width:@global-width;
+  margin:0 auto;
+}
+.header-inner li{
+  float:left;
+}
+.header-inner a{
+  _float:left;
+  position: relative;
+  display: block;
+  color: @color;
+  font-size: 16px;
+  border-bottom: 2px solid @bgcolor;
+  padding: 44px 23px;
+  text-decoration: none;
+  height: 25px;
+  .transition(all,0.5s,ease)
+}
+.header-inner a:focus,.header-inner a:hover{
+  border-bottom-color: @activecolor;
+}
+.footer{
+  border-top:2px solid @lighten2;
+}
+.footer-inner{
+  height: 86px;
+  margin:0 auto;
+  min-width: 990px;
+  padding: 20px 0;
+  margin-top: 20px;
+  text-align: center;
+}
+.items-container{
+  margin-left:65px;
+  padding-top:20px;
+  display: inline;
+  float:left;
+}
+.item{
+  list-style: none;
+  color: @lighten2;
+}
+.item-desc{
+  text-indent: 2em;
+  color:@lighten2;
+}
+
+
+.work-iphone5c_small{
+  height: 533px;
+  width: 250px;
+  background: url(../images/iphone5C_blue.png);
+}
+.work-iphone5c_big{
+  height: 812px;
+  width: 385px;
+  background: url(../images/iphone5C_blue_big.png) no-repeat;
+}
+.work-item{
+  position: relative;
+  margin-top:@padding;
+  width:@global-width;
+  border-top:1px solid #eee;
+/*  .debug()*/
+}
+.work-item h3{
+  margin: 41px 0 23px;
+  height: 44px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.work-senchatouch{
+  height: 900px;
+  border-top:none;
+}
+.work-base{
+  height: 700px;
+}
+.work-other{
+  width: 100%;
+  padding-top:0;
+}
+
+
+#phone,#phone2{
+  float:left;
+  _float:left;
+  margin-left:320px;
+  display: inline;
+  position: relative;
+  cursor:pointer;
+  margin-top:-40px;
+  .transition(all,0.5s,ease);
+  .transform(0deg,1,0deg,0px);
+/*  .debug()*/
+}
+#phone:hover,#phone:focus,#phone2:focus,#phone2:hover{
+  .transform(0deg,1,0deg,40px);
+}
+.phone-item{
+  width: 120px;
+/* .debug()*/
+}
+.phone-block{
+    position: absolute;
+    width:214px;
+    top:76px;
+    left:18px;
+    height:380px;
+/*    .debug()*/
+}
+.phone-block-big{
+  position: absolute;
+  width:320px;
+  top:120px;
+  left:35px;
+  height:568px;
+}
+
+.work-iframe,#workFrame{
+/*  .debug()*/
+  width:320px;
+  height:568px;
+}
+#workFrame{
+  border:none;
+  overflow-x : hidden;
+  overflow-y : hidden;
+}
+
+
+
+
+

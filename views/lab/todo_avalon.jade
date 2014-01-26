@@ -1,0 +1,53 @@
+doctype html
+html
+    head
+        title Todo
+        meta(http-equiv="Content-Type",content="text/html;charset=UTF-8")
+        link(rel='stylesheet', href='/stylesheets/todo.css')
+        script(src='/javascripts/avalon.js')
+        script
+            avalon.ready(function () {
+                       avalon.define('todo', function (vm) {
+                           var todos = [
+                               'example'
+                           ];
+                           vm.new='';
+                           vm.errshow=true;
+                           vm.succshow=true;
+                           vm.todos = todos;
+                           vm.add=function(){
+                               if(vm.new){
+                                   for(var i=0;i<vm.todos.length;i++){
+                                       if(vm.new==vm.todos[i]){
+                                           alert('重复任务')
+                                           vm.new='';
+                                           return;
+                                       }
+                                   }
+                                   vm.todos.push(vm.new);
+                                   vm.new='';
+                               }
+                           }
+                           vm.remove = function(n){
+                               vm.todos.splice(n,1);
+                           }
+                       });
+                       avalon.scan();
+            })
+    body
+        h1 Todos
+            small &nbsp;By avalon.js
+        hr
+        div(ms-controller="todo")
+            div#todoapp
+                p
+                    input(type="text",id="new-todo",placeholder="What needs to be done?",ms-duplex="new")
+                    input(type="button",id="new-add",ms-click='add()',value="+")
+                ul#todo-list(ms-each="todos")
+                    li.item
+                        {{el}}
+                        input(type="submit",class="destroy",ms-click="remove($index)",value="移除")
+                footer(style='display:block')
+                    div.todo-count
+                        b
+                            {{todos.length}} items left

@@ -21,9 +21,10 @@ var getLocaIp = function(cb){
 }
 
 var getIp = function(req,res){
-    var ip = getLocaIp(function(data){
+    getLocaIp(function(data){
         res.jsonp(data);
-    });
+    })
+
 }
 var getIpInfo = function(req,res){
     var query = req.params;

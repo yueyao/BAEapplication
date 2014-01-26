@@ -26,7 +26,6 @@ $(function(){
 
 
     $.get('/api/getIpInfo',function(data){
-        console.log(data);
         $('.ip').html("您的IP："+data.start+','+data.isp)
     })
 

@@ -40,7 +40,7 @@ module.exports = function(app){
     /**
      * work
      */
-    works(app)
+    works(app);
 
 
     app.use(function (req, res) {

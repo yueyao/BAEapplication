@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head >
+    <title>todo angular.js</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script src="../javascripts/angular.min.js"></script>
+    <script src="../javascripts/todo.js"></script>
+    <link rel="stylesheet" href="../stylesheets/todo.css"/>
+</head>
+<body ng-app="todos">
+<h1>Todos<small>&nbsp;By angular.js</small>
+</h1>
+<hr/>
+<div ng-controller="todo">
+    <div id="todoapp">
+        <p>
+            <input type="text" placeholder="What needs to be done?"  ng-model="new" id="new-todo"/>
+            <input type="button" id="new-add" ng-click="add()" value="+">
+        </p>
+
+        <ul id="todo-list">
+            <li ng-repeat="todo in todos">
+                {{todo}}
+                <input type="submit" ng-click="remove($index)" value="移除" class="destroy">
+            </li>
+        </ul>
+        <footer style="display: block">
+            <div class="todo-count">
+                <b>{{todos.length}}items left</b>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

@@ -86,6 +86,8 @@ var getWeather = function(req,res){
                 _getWeather(code,function(data){
                     res.jsonp(data);
                 })
+            }else {
+                res.jsonp({status:'false'})
             }
         })
     } else {
@@ -95,6 +97,7 @@ var getWeather = function(req,res){
     }
 
 }
+
 
 /**
  * 天气API DEMO
@@ -124,7 +127,22 @@ var _getWeather = function(code,cb){
 
 }
 
+var test = function(req,res){
+    var url = 'http://m.weather.com.cn/data/101010100.html';
 
+    http.get(url,function(respon){
+        var data = '';
+        respon.on('data',function(chunk){
+            data+= chunk;
+        })
+        respon.on('end',function(){
+            res.jsonp(JSON.parse(data))
+        })
+        respon.on('error',function(){
+            res.jsonp({status:'false',msg:'Error!'})
+        })
+    })
+}
 
 exports.weatherCityList = weatherCityList ;
 exports.weatherProvList = weatherProvList ;
@@ -134,3 +152,4 @@ exports.getCity = getCodeFormCity ;
 exports.getCode = getCityFormCode ;
 exports.getWeather = getWeather ;
 exports.getWeatherDemo = getWeatherDemo ;
+exports.wtest = test;

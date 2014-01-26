@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AVA</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script src="../public/javascripts/avalon.js"></script>
+    <script>
+
+
+    </script>
+</head>
+<body>
+<div ms-controller="box">
+    <div style=" background: #a9ea00;" ms-css-width="w" ms-css-height="h"  ms-click="click"></div>
+    <p>{{ w }} x {{ h }}</p>
+    <p>W: <input type="text" ms-duplex="w" data-duplex-event="change"/></p>
+    <p>H: <input type="text" ms-duplex="h" /></p>
+</div>
+<script>
+    avalon.define("box", function(vm) {
+        vm.w = 100;
+        vm.h = 100;
+        vm.click = function() {
+            vm.w = parseFloat(vm.w) + 10;
+            vm.h = parseFloat(vm.h) + 10;
+        }
+    })
+</script>
+
+<script>
+    var model = avalon.define("update", function(vm) {
+        vm.aaa = "str"
+        vm.bbb = false
+        vm.ccc = 1223
+        vm.time = new Date
+        vm.simpleArray = [1, 2, 3, 4]
+        vm.objectArray = [{name: "a"}, {name: "b"}, {name: "c"}, {name: "d"}]
+        vm.object = {
+            o1: "k1",
+            o2: "k2",
+            o3: "k3"
+        }
+        vm.simpleArray = [1, 2, 3, 4]
+        vm.objectArray = [{name: "a", value: "aa"}, {name: "b", value: "bb"}, {name: "c", value: "cc"}, {name: "d", value: "dd"}]
+        vm.object = {
+            o1: "k1",
+            o2: "k2",
+            o3: "k3"
+        }
+    })
+    setTimeout(function() {
+        //如果是更新简单数据类型（string, boolean, number）或Date类型
+        model.aaa = "这是字符串"
+        model.bbb = true
+        model.ccc = 999999999999
+        var date = new Date
+        model.time = new Date(date.setFullYear(2005))
+    }, 2000)
+
+    setTimeout(function() {
+        //如果是数组，注意保证它们的元素的类型是一致的
+        //只能全是字符串，或是全是布尔，不能有一些是这种类型，另一些是其他类型
+        //这时我们可以使用set方法来更新（它有两个参数，第一个是index，第2个是新值）
+        model.simpleArray.set(0, 1000)
+        model.simpleArray.set(2, 3000)
+        model.objectArray.set(0, {name: "xxxxxxxxxxxxxxxx", value: "xxx"})
+    }, 2500)
+    setTimeout(function() {
+        model.objectArray[1].name = "5555"
+    }, 3000)
+    setTimeout(function() {
+        //如果要更新对象，直接赋给它一个对象，注意不能将一个VM赋给它，可以到VM的$model赋给它（要不会在IE6-8中报错）
+        model.object = {
+            aaaa: "aaaa",
+            bbbb: "bbbb",
+            cccc: "cccc",
+            dddd: "dddd"
+        }
+    }, 3000)
+</script>
+<div ms-controller="update">
+    <div>{{aaa}}</div>
+    <div>{{bbb}}</div>
+    <div>{{ccc}}</div>
+    <div>{{time | date("yyyy - MM - dd mm:ss")}}</div>
+    <ul ms-each="simpleArray">
+        <li>{{el}}</li>
+    </ul>
+    <div>  <select ms-each="objectArray">
+        <option ms-value="el.value">{{el.name}}</option>
+    </select>
+    </div>
+    <ol ms-with="object">
+        <li>{{$key}}                {{$val}}</li>
+    </ol>
+</div>
+</body>
+</html>

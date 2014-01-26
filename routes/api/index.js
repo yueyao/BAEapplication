@@ -24,6 +24,7 @@ module.exports = function(app){
 
 
 
+    app.get('/api/weather/wtest',weather.wtest)
     app.get('/api/weather/today',weather.getWeather)
     app.get('/api/weather/bycode/:code',weather.getWeather)
     app.get('/api/weather/demo',weather.getWeatherDemo)
@@ -31,9 +32,5 @@ module.exports = function(app){
     app.get('/api/weather/provs',weather.weatherProvList)
     app.get('/api/weather/code/:city',weather.getCity)
     app.get('/api/weather/city/:code',weather.getCode)
-
-
-
-
 
 }
