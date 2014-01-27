@@ -46,7 +46,7 @@ hr {
 .header-inner li {
   float: left;
 }
-.header-inner a {
+.header-inner li a {
   _float: left;
   position: relative;
   display: block;
@@ -62,9 +62,17 @@ hr {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.header-inner a:focus,
-.header-inner a:hover {
+.header-inner li a:focus,
+.header-inner li a:hover {
   border-bottom-color: #357ae8;
+}
+.site-logo {
+  position: absolute;
+  display: block;
+  height: 48px;
+  top: 35px;
+  width: 200px;
+  overflow: hidden;
 }
 .footer {
   border-top: 2px solid #626262;
@@ -95,6 +103,14 @@ hr {
   height: 533px;
   width: 250px;
   background: url(../images/iphone5C_blue.png);
+  position: relative;
+}
+.work-small-frame {
+  height: 380px;
+  width: 212px;
+  position: absolute;
+  top: 76px;
+  left: 18px;
 }
 .work-iphone5c_big {
   height: 812px;
@@ -121,6 +137,9 @@ hr {
 .work-base {
   height: 700px;
 }
+.work-base1 {
+  height: 900px;
+}
 .work-other {
   width: 100%;
   padding-top: 0;
@@ -129,7 +148,7 @@ hr {
 #phone2 {
   float: left;
   _float: left;
-  margin-left: 320px;
+  /* margin-left:320px;*/
   display: inline;
   position: relative;
   cursor: pointer;
@@ -146,6 +165,9 @@ hr {
   transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
   /*  .debug()*/
 }
+#phone2 {
+  margin-left: 550px;
+}
 #phone:hover,
 #phone:focus,
 #phone2:focus,
@@ -156,8 +178,14 @@ hr {
   -ms-transform: rotate(0deg) scale(1) skew(0deg) translate(40px);
   transform: rotate(0deg) scale(1) skew(0deg) translate(40px);
 }
+.phone-items {
+  float: left;
+  _float: left;
+  width: 550px;
+  height: 550px;
+}
 .phone-item {
-  width: 120px;
+  width: 240px;
   /* .debug()*/
 }
 .phone-block {
@@ -175,13 +203,43 @@ hr {
   left: 35px;
   height: 568px;
 }
+.phone-desc {
+  clear: both;
+  width: 420px;
+}
+.phone-item-a {
+  line-height: 24px;
+  color: #151515;
+  cursor: pointer;
+  border-left: 1px solid #357ae8;
+  padding-left: 20px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.phone-item-a:hover,
+.phone-item-a:focus {
+  border-left: 5px solid #357ae8;
+  padding-left: 26px;
+}
 .work-iframe,
 #workFrame {
   /*  .debug()*/
   width: 320px;
   height: 568px;
+  color: #151515;
+  background: #fff;
+}
+.work-img {
+  width: 320px;
+  height: 568px;
+  max-width: 320px;
 }
 #workFrame {
+  width: 320px;
+  height: 568px;
   border: none;
   overflow-x: hidden;
   overflow-y: hidden;

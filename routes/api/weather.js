@@ -119,7 +119,7 @@ var _getWeather = function(code,cb){
         })
         respon.on('end',function(){
             cb(JSON.parse(data))
-        })
+        });
         respon.on('error',function(){
             cb({status:'false',msg:'Error!'})
         })

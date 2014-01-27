@@ -7,34 +7,52 @@ html
         link(href='../cube/type-min.css',rel="stylesheet")
         link(href='../cube/cube-min.css',rel="stylesheet")
         link(href='../stylesheets/work.css',rel="stylesheet")
+        script(src='../javascripts/work.js')
+
+
     body
         div.header
             div.header-inner
                 ul
                     li.item
-                        a 测试
+                        a(href='/') YueYao
                     li.item
-                        a 测试
+                        a(href='/works') Works
                     li.item
-                        a 测试
-        div.container
+                        a(href='/api') API
+        div.container(ms-controller="works")
             div.work-item.work-senchatouch
-                h3 DEMOTESTTEST
-                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
-                ul.items-container.phone-item
+                h3 Web App 作品
+                p.item-desc 利用Sencha Touch 实现的WebApp 作品列表(部分)。
+                div.phone-items
+                    ul.items-container.phone-item(ms-each="simpArr")
+                        li
+                            a.phone-item-a(ms-on-click="show($index)")
+                                {{el.name}}
+                    div.items-container.phone-desc
+                        h3
+                            {{activeElTitle}}
+                        p
+                            {{activeElDesc}}
+                        a.phone-btn(target="_blank",ms-href="{{activeElHref}}") 查看详情(手机端查看)
+
                 div#phone.work-iphone5c_big
                     div.phone-block-big
                         div.work-iframe
-                            iframe#workFrame(src="http://m.taobao.com", width="320", height="568", frameborder="0")
-            div.work-item.work-base
-                h3 RequireJs
-                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
-            div.work-item.work-base
-                h3 AngularJs
-                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
-            div.work-item.work-base
-                h3 AvalonJs
-                p.item-desc 如何评价 2014 年李娜夺得澳网冠军?
+                            img.work-img(ms-src="../images/{{activeElsrc}}")
+                            //iframe#workFrame(src="http://m.taobao.com", width="320", height="568", frameborder="0")
+            div.work-item.work-base1
+                h3 RequireJs/SeaJs
+                p.item-desc 使用Require.js 实现模块化开发.
+                p 本页面采用HTML5，需使用高级浏览器(chrome,firefox等)浏览
+                div#phone2.work-iphone5c_big
+                    div.phone-block-big
+                        div.work-iframe
+                            iframe#workFrame(src="http://42.96.188.233:7002/", frameborder="0")
+            div.work-item
+                h3 AngularJs/AvalonJs
+                p.item-desc 使用AngularJs/AvalonJs，免去操作DOM的繁琐步骤。简化代码，开发起来更易维护.
+                p 本页面就是使用AvalonJS实现
             div.work-item.work-base
                 h3 Other
                 p.item-desc 过去的一年中,接触并使用了以下列表中的技术。
@@ -59,3 +77,6 @@ html
                     li JavaScript Web富应用开发
                     li Sencha Touch权威指南
                     li 用AngularJs开发下一代Web应用
+
+        div.footer
+            div.footer-inner Node.js+Express+Avalon.js

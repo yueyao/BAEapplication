@@ -29,12 +29,12 @@ $(function(){
         $('.ip').html("您的IP："+data.start+','+data.isp)
     })
 
-    $.get('/api/weather/today',function(data){
+/*    $.get('/api/weather/today',function(data){
         var date = new Date();
         var hour = date.getHours();
         var info = hour>data.weatherinfo.fchh ? "今天夜间":"今天白天";
         $('.weather').html(data.weatherinfo.city+" : "+info + data.weatherinfo.temp1);
-    })
+    })*/
 
 
 });

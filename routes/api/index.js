@@ -7,6 +7,10 @@ var getipinfo = require('./getIpInfo');
 var weather = require('./weather');
 
 module.exports = function(app){
+
+    app.get('/api',function(req,res){
+        res.render('api/index');
+    });
     /**
      * 美女时钟API
      * showtime 当前时间
@@ -23,14 +27,13 @@ module.exports = function(app){
     app.get('/api/getIpInfo/:ip',getipinfo.getIpInfo);
 
 
-
+/*
     app.get('/api/weather/wtest',weather.wtest)
     app.get('/api/weather/today',weather.getWeather)
-    app.get('/api/weather/bycode/:code',weather.getWeather)
     app.get('/api/weather/demo',weather.getWeatherDemo)
     app.get('/api/weather/citys',weather.weatherCityList)
     app.get('/api/weather/provs',weather.weatherProvList)
     app.get('/api/weather/code/:city',weather.getCity)
-    app.get('/api/weather/city/:code',weather.getCode)
+    app.get('/api/weather/city/:code',weather.getCode)*/
 
 }
