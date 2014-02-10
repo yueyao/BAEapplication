@@ -13,8 +13,15 @@ var getIp  = require('./getIpInfo');
  */
 var weatherProvList = function(req,res){
     var result = cityCodes.provs();
-    res.json(result)
+    res.jsonp(result)
 }
+
+var getCitysByProv = function(req,res){
+    var query = req.params.prov;
+    var result = cityCodes.queryProvince(query);
+    res.jsonp(result);
+}
+
 /**
  * 获取城市列表
  * @param req
@@ -119,7 +126,7 @@ var _getWeather = function(code,cb){
         })
         respon.on('end',function(){
             cb(JSON.parse(data))
-        });
+        })
         respon.on('error',function(){
             cb({status:'false',msg:'Error!'})
         })
@@ -146,6 +153,7 @@ var test = function(req,res){
 
 exports.weatherCityList = weatherCityList ;
 exports.weatherProvList = weatherProvList ;
+exports.getCitysByProv = getCitysByProv ;
 exports.getWeatherByCity = getWeatherByCity ;
 exports.getWeatherByCode = getWeatherByCode ;
 exports.getCity = getCodeFormCity ;

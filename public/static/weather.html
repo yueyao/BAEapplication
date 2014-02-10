@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script src="../javascripts/avalon.js"></script>
+    <script>
+        var API_KEY = '9d34182dd6194b249e4578c5e6ee85dc';
+        var weather_citys = 'http://iyueyaos.duapp.com/api/weather/provs';
+        var weather_API = 'http://v.juhe.cn/weather/index?dtype=jsonp&key='+API_KEY+'&cityname=';
+        var ip_API = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+        avalon.ready(function(){
+            var avalonAjax,avalonGetScript;
+            var weather = avalon.define('weather',function(vm){
+                vm.aa='aa';
+                vm.ip = '';
+                vm.today = '';
+                vm.future = [];
+                vm.cityList = ['北京'];
+                vm.cityChange = function(n){
+
+                }
+
+            });
+            require("mmRequest", function(avalon) {
+                avalonAjax = avalon.getJSON
+                avalonGetScript = avalon.getScript
+                avalonAjax(weather_citys,function(a,b){
+                    if(b=='success'){
+                        weather.cityList = a;
+                    }
+                });
+                avalonGetScript(ip_API,function(a,b){
+                    weather.ip = remote_ip_info;
+                    if(remote_ip_info.city){
+                        avalonAjax( weather_API+remote_ip_info.city,function(a,b) {
+                            var success = a.resultcode=='200'?true:false;
+                            if(success){
+                                weather.today= a.result.today;
+                                weather.future = formatFuture(a.result.future);
+                            }
+                        });
+                    }
+                })
+            })
+            avalon.scan();
+            var formatFuture = function(data){
+                var result = [];
+                for(var i in data){
+                    var info = {};
+                    for(var j in data[i]){
+                        info[j] = data[i][j];
+                    }
+                    result.push(info);
+                }
+                return result;
+            }
+        })
+
+    </script>
+</head>
+<body >
+    <h3>Weather</h3>
+    <div ms-controller="weather" class="main">
+
+        <hr/>
+        <h3>{{ip.city}}</h3> <small>{{ip.end}}</small>
+        <hr/>
+        <select name="" id="" ms-each-el="cityList" ms-change="cityChange()">
+            <option ms-value="el">{{el}}</option>
+        </select>
+        <!-- 今日气象 -->
+        <script type="text/avalon" id="weather_tpl">
+             Today, {{ today.date_y}} ,{{today.week}},{{today.weather}}
+             <p>{{today.dressing_advice}}</p>
+             <p>{{today.dressing_index}}</p>
+             <p>{{today.exercise_index}}</p>
+             <p>{{today.temperature}}</p>
+             <p>{{today.travel_index}}</p>
+             <p>{{today.uv_index}}</p>
+             <p>{{today.wash_index}}</p>
+             <p>{{today.wind}}</p>
+        </script>
+
+        <div  ms-include="'weather_tpl'"></div>
+        <!-- 未来几天气象 -->
+        <ul ms-each-el="future">
+            <li>
+                 <h4>{{el.date}}</h4>
+                 <p>
+                     {{el.temperature}} <br/>
+                     {{el.weather}} <br/>
+                     {{el.week}} <br/>
+                     {{el.wind}} <br/>
+                 </p>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

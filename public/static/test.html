@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script src="../javascripts/avalon.js"></script>
+    <title>test</title>
+    <script>
+        var a = avalon.define("xxx", function(vm) {
+            vm.obj = {
+                aaa: "xxx",
+                bbb: "yyy",
+                ccc: "zzz"
+            }
+            vm.first = "司徒正美"
+        })
+        setTimeout(function() {
+            a.obj.aaa = "7777777777"
+            a.first = "清风火忌"
+        }, 1000)
+        setTimeout(function() {
+            a.obj.bbb = "8888888"
+        }, 3000)
+    </script>
+</head>
+<body ms-controller="xxx">
+<div ms-with="obj">
+    <div>{{$key}} {{$val}}</div>
+</div>
+<hr/>
+<div ms-with="obj">
+    <div>{{$key}} {{$val}}</div>
+</div>
+<hr/>
+<div ms-with="obj">
+    <div>{{$key}} {{$val}}</div>
+</div>
+</body>
+</html>
