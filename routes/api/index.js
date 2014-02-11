@@ -21,15 +21,13 @@ module.exports = function(app){
      */
     app.get('/api/getIpInfo',getipinfo.getIp);
     app.get('/api/getIpInfo/:ip',getipinfo.getIpInfo);
-    app.get('/api/getIp',function(req,res){
-        var ip = req.headers['x-forwarded-for'] ||
-            req.connection.remoteAddress ||
-            req.socket.remoteAddress ||
-            req.connection.socket.remoteAddress;
-        res.jsonp(ip);
-    });
+    app.get('/api/getIp',getipinfo.getLocaIp);
 
-
+    /**
+     * 天气查询
+     * wtest 测试
+     * today 北京今天
+     */
     app.get('/api/weather/wtest',weather.wtest)
     app.get('/api/weather/today',weather.getWeather)
     app.get('/api/weather/bycode/:code',weather.getWeather)

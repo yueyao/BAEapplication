@@ -87,7 +87,7 @@ var getCityFormCode = function(req,res){
 var getWeather = function(req,res){
     var query = req.params.code || '';
     if(!query){
-        getIp.getLocaIp(function(data){
+        getIp.getLocaIpInfo(req,res,function(err,data){
             if(!data.status){
                 var code = cityCodes.queryCode(data.city);
                 _getWeather(code,function(data){
@@ -96,7 +96,7 @@ var getWeather = function(req,res){
             }else {
                 res.jsonp({status:'false'})
             }
-        })
+        });
     } else {
         _getWeather(query,function(data){
             res.jsonp(data);

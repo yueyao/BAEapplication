@@ -26,7 +26,7 @@ $(function(){
 
 
     $.get('/api/getIpInfo',function(data){
-        $('.ip').html("您的IP："+data.start+','+data.isp)
+        $('.ip').html("您的IP："+data.ip+','+data.isp);
     })
 
     $.get('/api/weather/today',function(data){
