@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>proxy</title>
+    <script src=""></script>
+    <!-- 服务端proxy页面 -->
+
+    <!--
+        window.postMessage
+        兼容IE8  IE9 等高级浏览器   低版本IE不支持
+
+     -->
+</head>
+<body>
+    <button id="send">发送message</button>
+    <script>
+        window.addEventListener("message", receiveMessage, false);
+        function receiveMessage(event){
+            console.log("postMessage is send")
+            if(event.source!=window.parent) return;
+            var date = new Date().getTime();
+            window.parent.postMessage("proxy:"+date,'*');
+        }
+        var send = document.getElementById('send');
+        send.onclick=function(){
+            console.log('button send is trigger ')
+            var date = new Date().getTime();
+            window.parent.postMessage("trigger: "+date,'*');
+        }
+    </script>
+</body>
+</html>
